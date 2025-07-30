@@ -30,7 +30,7 @@ function getAllImages(dir, base = "") {
       result = result.concat(getAllImages(fullPath, relativePath));
     } else {
       const id = relativePath.split("/").at(-1);
-      const category = dirname(relativePath).split("/").at(-1);
+      const categories = dirname(relativePath).split("/");
 
       const existingEntry =
         existingIndex.length > 0 && existingIndex.find((img) => img.id === id);
@@ -40,7 +40,7 @@ function getAllImages(dir, base = "") {
       result.push({
         id,
         path: `/img/${relativePath}`,
-        category,
+        categories,
         elo,
       });
     }
